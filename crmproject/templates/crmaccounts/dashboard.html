@@ -1,0 +1,116 @@
+{% extends 'crmaccounts/basefile.html' %}
+<html>
+<head>
+    <title>
+        Home
+    </title>
+    <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+{% include 'crmaccounts/navbar.html' %}
+{% include 'crmaccounts/customers.html' %}
+
+{% block content %}
+    <style>
+        body{
+            background-color: lightcyan;
+
+        }
+        th{
+            color: black;
+        }
+        td{
+            color: darkblue;
+
+        }
+    </style>
+    {% include 'crmaccounts/status.html' %}
+    <br>
+    <div class="container-fluid" style="margin-top: 20px;">
+    <div class="row">
+    <br>
+    <center>
+    <a class="bg-danger" href="{% url 'create_order' %}" style="text-align: justify ;color: black;font-size: 20px;border: 2px;border-radius: 5px">place a order</a>
+    </center>
+    <br>
+        <div class="col-md-4"><br><br>
+            <div class="card text-white text-center bg-warning " style="border-radius: 10px">
+                <div class="card-header">
+                    <h4 class="card-title" style="color:red"> Ordered customer</h4>
+                </div>
+                <div class="card-body">
+                    <table class="table table-bordered table-sm text-center bg-warning text-white">
+                        <thead class="bg-info text-white">
+                        <tr>
+                            <th>love</th>
+                            <th>Name</th>
+                            <th>mobile</th>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+                        {% for customer in customers %}
+                            <tr>
+                            <td><a href="{% url 'customers' customer.id  %}">view</a></td>
+                            <td>{{ customer.name}}</td>
+                            <td>{{ customer.mobile }}</td>
+
+                            </tr>
+                        {% endfor %}
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </div>
+        <div class="col-md-6"><br><br>
+            <div class="card text-white btn-group-lg text-center " style="border: 40px">
+                <div class="card-header " style="border: 30px;border-radius: 100px;background-color: red">
+                    <h4 class="card-title " style="color: blue" >ordered Products</h4>
+
+                </div>
+                <div class="card-body">
+                    <table class="table table-bordered table-sm text-center bg-primary text-white">
+                        <thead class="bg-primary">
+                        <tr>
+                            <th>Name</th>
+                            <th>Created_Date</th>
+                            <th>Status</th>
+                            <th>Update</th>
+                            <th>Delete</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for order in orders %}
+                            <tr>
+                            <td>{{ order.product }}</td>
+                            <td>{{ order.created_date }}</td>
+                            <td>{{ order.status }}</td>
+                            <td><a href="{% url 'update_order' order.id %}" class="btn btn-success">Upadate</a></td>
+                            <td><a href="{% url 'delete_order' order.id %}" class="btn btn-danger">Delete </a></td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+
+                    </table>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <hr>
+    </div>
+{% endblock %}
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md">
+            <div class="card bg-success text-white text-center">
+                <div class="card-header">
+                    <h4 class-title style="color: red">Total order</h4>
+
+                </div>
+                <div class="card-body">
+                    <h1 class="card-title">{{total_orders}}</h1>
+
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md">
+            <div class="card bg-warning text-white text-center">
+                <div class="card-header">
+                    <h4 class-title>Pending</h4>
+
+                </div>
+                <div class="card-body">
+                    <h1 class="card-title">{{ pending }}</h1>
+
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md">
+            <div class="card bg-primary text-white text-center">
+                <div class="card-header">
+                    <h4 class-title>delivered</h4>
+
+                </div>
+                <div class="card-body">
+                    <h1 class="card-title">{{ delivered }}</h1>
+
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md">
+            <div class="card bg-danger text-white text-center">
+                <div class="card-header">
+                    <h4 class-title>outfordelivered</h4>
+
+                </div>
+                <div class="card-body">
+                    <h1 class="card-title">{{ outfordelivery }}</h1>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

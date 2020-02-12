@@ -1,0 +1,117 @@
+{% extends 'crmaccounts/basefile.html' %}
+<html>
+<head>
+    <title>customers</title>
+    <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+{% include 'crmaccounts/navbar.html' %}
+{% block content %}
+    <style>
+        .p1{
+            margin-top: 10px;
+        }
+        h11{
+            margin-top: 5px;
+            font-family: "Edwardian Script ITC";
+
+        }
+        body{
+            background-color: lightcyan;
+
+        }
+
+    </style>
+    <h1 class="bg-primary text-center text-white " id="h11">{{ customers.name }} Product Details....! </h1>
+    <div class="container-fluid">
+    <div class="row">
+        <div class="col-md">
+            <div class="card ">
+                <div class="card-body">
+                    <button class="btn btn-outline-danger btn-block" ><a href="{% url 'delete_customer' customers.id %}">Delete customers</a></button>
+                    <button class="btn btn-outline-success btn-block"><a href="{% url 'update_customer' customers.id %}">update customers</a></button>
+
+                </div>
+
+            </div>
+
+        </div>
+                <div class="col-md">
+
+            <div class="card bg-success text-white text-center">
+                <div class="card-body">
+                    <h4 class="text-center">Contact inforamtion</h4>
+                    <center><p class="p1">Mobile  : {{ customers.mobile }}</p>
+                    <p class="p1">Email  : {{ customers.email }}</p></center>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md">
+            <div class="card bg-primary text-white text-center">
+                <div class="card-body">
+                    <h4 class="text-center">Total orders</h4>
+
+
+                </div>
+                <h4 class="card-title">{{ total_orders }}</h4>
+`
+            </div>
+
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-md">
+            <div class="card">
+                <div class="card-body">
+                    <table class="table">
+                        <thead>
+                        <tr class="bg-success text-center text-white">
+                            <th>Customer Name</th>
+                            <th>Product Name</th>
+                            <th>Product Category</th>
+                            <th>Product Price</th>
+                            <th>Product Status</th>
+                            <th>Oreder_Date</th>
+                            <th>Product Update</th>
+                            <th>Product Delete</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for order in orders %}
+                            <tr>
+                            <td>{{ order.customer.name }}</td>
+                            <td>{{ order.product.name }}</td>
+                            <td>{{ order.product.category }}</td>
+                            <td>{{ order.product.price}}</td>
+                            <td>{{ order.status}}</td>
+                            <td>{{ order.created_date }}</td>
+                            <td><a href="{% url 'update_product' order.product.id %}" class="btn btn-success">Update</a></td>
+                            <td><a href="{% url 'delete_product' order.product.id %}" class="btn btn-danger">Delete</a></td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    </div>
+{% endblock %}
+</body>
+</html>

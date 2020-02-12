@@ -1,0 +1,67 @@
+{% extends 'crmaccounts/basefile.html' %}
+<html>
+<head>
+    <title>products</title>
+</head>
+<body>
+
+{% include 'crmaccounts/navbar.html' %}
+{% block content %}
+    <style>
+    body{
+        background-color: lightcyan;
+    }
+   .card {
+       background: red;
+       
+
+    }
+    .card-body{
+        border-radius: 40px;
+    
+    }
+</style>
+    <h1 class="bg-success text-center text-white"
+        style="margin-top: 5px;font-family: 'Edwardian Script ITC'">products Details...</h1>
+
+    <div class="container-fluid">
+    <div class="row">
+        <div class="col-md">
+            <div class="card" style="border-radius: 30px">
+                <div class="card-body " >
+                     <table class="table table-bordered table-hover " >
+                         <thead>
+
+                         <tr class="bg-warning text-center text-white">
+
+                            <th>Product Names</th>
+                            <th>Product Prices</th>
+                            <th>Product Order_Date</th>
+                            <th>Product Category</th>
+                            <th>Product Description</th>
+                        </tr>
+                        </thead>
+                         <tbody class="bg-info text-white">
+                         {% for product in products %}
+                             <tr>
+                             <td>{{ product.name }}</td>
+                             <td>{{ product.price }}</td>
+                             <td>{{ product.created_date }}</td>
+                             <td>{{ product.category}}</td>
+                             <td>{{ product.description }}</td>
+
+                             </tr>
+                         {% endfor %}
+
+                         </tbody>
+                    </table >
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    </div>
+{% endblock %}
+</body>
+</html>
